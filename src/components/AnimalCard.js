@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 
 const AnimalCard = ({ name }) => (
   <Wrapper>
-    <img src={Img} />
+    <img src={Img} alt="Dog" />
     <p>{name}</p>
   </Wrapper>
 );
