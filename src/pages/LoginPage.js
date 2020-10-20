@@ -3,6 +3,7 @@ import styled from "styled-components";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import { ReactComponent as HelloIcon } from "../assets/HelloIcon.svg";
+import axios from "axios";
 const Wrapper = styled.div`
   position: absolute;
   top: 30%;
@@ -18,16 +19,28 @@ const Wrapper = styled.div`
 `;
 
 const LoginPage = () => {
-  const responseGoogle = (response) => console.log(response);
+  const responseGoogle = (response) => {
+    axios
+      .post("http://176.107.131.27:5000/auth/google", {
+        token: response.tokenId,
+      })
+      .then((res) => console.log(res));
+  };
 
   const responseFacebook = (response) => {
+    axios
+      .post("http://176.107.131.27:5000/auth/facebook", {
+        token: response.accessToken,
+      })
+      .then((res) => console.log(res));
     console.log(response);
   };
   return (
     <Wrapper>
+      <p>Witaj</p>
       <HelloIcon />
       <GoogleLogin
-        clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+        clientId="299847310816-vc55jckp0jqbioah4fv37vcv4pn9oiuh.apps.googleusercontent.com"
         buttonText="Zaloguj się z google"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
@@ -35,7 +48,7 @@ const LoginPage = () => {
         disabled={false}
       />
       <FacebookLogin
-        appId="1088597931155576"
+        appId="652089999027908"
         autoLoad={false}
         fields="name,email,picture"
         callback={responseFacebook}
