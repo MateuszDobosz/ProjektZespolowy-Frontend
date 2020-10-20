@@ -9,12 +9,14 @@ export const logUserOut = () => ({ type: "LOG_OUT" });
 export const fetchUserGoogle = (userInfo) => (dispatch) => {
   axios
     .post("http://176.107.131.27:5000/auth/google", {
-      token: userInfo.tokenId,
+      token: userInfo,
     })
     .then((res) => {
+      console.log(res);
       localStorage.setItem("token", res.data.token);
-      dispatch(setUser(res.data.user));
-    });
+      dispatch(setUser(res.data));
+    })
+    .catch((err) => console.log(err));
 };
 
 export const fetchUserFacebook = (userInfo) => (dispatch) => {
