@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Menu from "./components/Menu";
 import LoginPage from "./pages/LoginPage";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { autoLogin } from "./actions/userActions";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,6 +13,12 @@ const Wrapper = styled.div`
 `;
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(autoLogin());
+  }, [dispatch]);
+
   return (
     <Wrapper>
       <Router>
