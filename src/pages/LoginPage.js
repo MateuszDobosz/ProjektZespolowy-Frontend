@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import GoogleLogin from "react-google-login";
-import FacebookLogin from "react-facebook-login";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { ReactComponent as HelloIcon } from "../assets/HelloIcon.svg";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserGoogle } from "../actions/userActions";
+import { FaGoogle, FaFacebookF } from "react-icons/fa";
+
 const Wrapper = styled.div`
   position: absolute;
   top: 30%;
@@ -24,6 +26,33 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
   height: 200px;
   justify-content: space-evenly;
+  align-items: center;
+`;
+
+const SocialButton = styled.button`
+  border: none;
+  width: 220px;
+  height: 50px;
+  background-color: ${({ facebook }) => (facebook ? "#395185" : "#ea4335")};
+  border-radius: 50px;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const LogoutButton = styled.button`
+  border: none;
+  width: 220px;
+  height: 50px;
+  background-color: #050505;
+  border-radius: 50px;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 const LoginPage = () => {
@@ -57,28 +86,41 @@ const LoginPage = () => {
             buttonText="Zaloguj się z google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
+            render={(renderProps) => (
+              <SocialButton
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <FaGoogle />
+                Zaloguj z Google
+              </SocialButton>
+            )}
             cookiePolicy={"single_host_origin"}
             disabled={false}
           />
           <FacebookLogin
             appId="652089999027908"
             autoLoad={false}
-            fields="name,email,picture"
             callback={responseFacebook}
-            textButton="Zaloguj sie z facebook"
+            render={(renderProps) => (
+              <SocialButton facebook onClick={renderProps.onClick}>
+                <FaFacebookF />
+                Zaloguj z Facebook
+              </SocialButton>
+            )}
           />
         </ButtonWrapper>
       )}
 
       {loggedIn ? (
-        <button
+        <LogoutButton
           onClick={() => {
             console.log(user);
             dispatch({ type: "LOG_OUT" });
           }}
         >
           Wyloguj{" "}
-        </button>
+        </LogoutButton>
       ) : null}
     </Wrapper>
   );
