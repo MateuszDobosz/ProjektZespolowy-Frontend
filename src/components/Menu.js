@@ -48,6 +48,9 @@ const Menu = () => {
         <img src={LogoIcon} alt="Logo" />
         <Wrapper>
           <ListItem>
+            <StyledLink to="/admin" activeClassName="active1">
+              Panel admina
+            </StyledLink>
             <StyledLink to="/donates" activeClassName="active1">
               Wesprzyj nas
             </StyledLink>
