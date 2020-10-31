@@ -11,6 +11,7 @@ const animalsList = [{
     title: "Vegas",
     imageUrl: "https://www.schronisko-katowice.eu/lib/w9q4c9/120611583_883765068824583_4422148573682145855_n-kg0j3b9u.jpg",
     category: "Pies"
+
 },
 {
     id: 2,
@@ -61,6 +62,7 @@ const AnimalsPage = () => {
         axios.get(
             'https://schronisko-7cfd1.firebaseio.com/animals.json?fbclid=IwAR0ytVWDVilsfiWTJvHSVjeNjBaYC-L5jkhTgETP_Vujf0PUJAoGG1yArt8')
             .then(response => {
+                console.log(response.data)
                 setAnimals(animalsList);
 
             })
@@ -68,7 +70,7 @@ const AnimalsPage = () => {
 
 
     return (<Wrapper>{animals.map(animal => {
-        return (<Animal key={animal.id} age={animal.age} description={animal.description} title={animal.title} category={animal.category} />)
+        return (<Animal key={animal.id} age={animal.age} description={animal.description} title={animal.title} category={animal.category} imageUrl={animal.imageUrl} />)
     })}</Wrapper>
     )
 }
