@@ -3,7 +3,8 @@ import styled from "styled-components";
 import StyledLink from "../components/Link";
 import LogoIcon from "../assets/Group.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserGoogle } from "../actions/userActions";
+import { Link } from "react-router-dom";
+// import { fetchUserGoogle } from "../actions/userActions";
 
 const NavWrapper = styled.div`
   background-color: #0d9e47;
@@ -16,7 +17,7 @@ const Wrapper = styled.ul`
   display: flex;
   list-style: none;
   height: 50px;
-  max-width: 1140px;
+
 
   justify-content: flex-end;
   align-items: center;
@@ -45,7 +46,7 @@ const Menu = () => {
   return (
     <NavWrapper>
       <BeltWrapper>
-        <img src={LogoIcon} alt="Logo" />
+        <Link to="/"><img src={LogoIcon} alt="Logo" /></Link>
         <Wrapper>
           <ListItem>
             <StyledLink to="/admin" activeClassName="active1">
@@ -76,10 +77,10 @@ const Menu = () => {
                 Wyloguj {user.name}
               </StyledLink>
             ) : (
-              <StyledLink to="/login" activeClassName="active1">
-                Dołącz do nas
-              </StyledLink>
-            )}
+                <StyledLink to="/login" activeClassName="active1">
+                  Dołącz do nas
+                </StyledLink>
+              )}
           </ListItem>
         </Wrapper>
       </BeltWrapper>

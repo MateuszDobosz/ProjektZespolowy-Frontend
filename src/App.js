@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { autoLogin } from "./actions/userActions";
 import AdminPage from "./pages/AdminPage";
+import AnimalsPage from "./pages/AnimalsPage";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ const App = () => {
         <Switch>
           <Route path="/donate"></Route>
           <Route path="/walk"></Route>
-          <Route path="/animals"></Route>
+          <Route path="/animals" component={AnimalsPage}></Route>
           <Route path="/admin" component={AdminPage}></Route>
           <Route path="/login" component={LoginPage}></Route>
           <Route path="/" component={HomePage}></Route>

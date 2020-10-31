@@ -42,7 +42,7 @@ export const fetchUserFacebook = (userInfo) => (dispatch) => {
 
 export const autoLogin = () => (dispatch) => {
   axios
-    .post("http://176.107.131.27:5000/auth/check", {
+    .post("http://mateuszdobosz.site/auth/check", {
       token: localStorage.getItem("token"),
     })
     .then((res) => {
