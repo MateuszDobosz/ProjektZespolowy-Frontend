@@ -1,5 +1,16 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import styled from 'styled-components';
+import ValidationSchema from './Validations/AddAnimalValidarion';
+
+
+const Form = styled.form`
+display:flex;
+justify-content:center;
+flex-direction:column;
+align-items:center;
+
+`
 
 const AddAnimalForm = () => {
     const formik = useFormik({
@@ -9,13 +20,14 @@ const AddAnimalForm = () => {
             age: '',
             description: '',
         },
-
+        ValidationSchema,
         onSubmit: values => {
             console.log(values);
         },
     });
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={formik.handleSubmit}>
+            <h1>Dodaj zwierzę</h1>
             <label htmlFor="title">Imię</label>
             <input
                 id="title"
@@ -47,11 +59,15 @@ const AddAnimalForm = () => {
                 value={formik.values.description}
             />
 
-
+            <label htmlFor="pet-image">Zdjęcie</label>
+            <input type="file"
+                id="pet-image" name="pet-image"
+                accept="image/png, image/jpeg"
+                onChange={formik.handleChange} />
 
             <button type="submit">Zatwierdź</button>
 
-        </form >
+        </Form >
     );
 };
 
