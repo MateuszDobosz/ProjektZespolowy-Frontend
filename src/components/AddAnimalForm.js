@@ -65,7 +65,7 @@ const AddAnimalForm = () => {
                 accept="image/png, image/jpeg"
                 onChange={formik.handleChange} />
 
-            <button type="submit">Zatwierdź</button>
+            <button type="submit">Dodaj zwierzę</button>
 
         </Form >
     );

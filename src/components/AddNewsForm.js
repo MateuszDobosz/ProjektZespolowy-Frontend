@@ -44,7 +44,7 @@ const AddNewsForm = () => {
             />
 
 
-            <button type="submit">Zatwierdź</button>
+            <button type="submit">Dodaj wiadomość</button>
 
         </Form >
     );
