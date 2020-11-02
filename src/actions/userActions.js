@@ -8,7 +8,7 @@ export const logUserOut = () => ({ type: "LOG_OUT" });
 
 export const fetchUserGoogle = (userInfo) => (dispatch) => {
   axios
-    .post("http://176.107.131.27:5000/auth/google", {
+    .post("http://176.107.131.27/auth/google", {
       token: userInfo,
     })
     .then((res) => {
@@ -20,24 +20,16 @@ export const fetchUserGoogle = (userInfo) => (dispatch) => {
 };
 
 export const fetchUserFacebook = (userInfo) => (dispatch) => {
-  fetch(`http://localhost:4000/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(userInfo),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      // data sent back will in the format of
-      // {
-      //     user: {},
-      //.    token: "aaaaa.bbbbb.bbbbb"
-      // }
-      localStorage.setItem("token", data.token);
-      dispatch(setUser(data.user));
-    });
+  axios
+    .post("http://176.107.131.27/auth/facebook", {
+      token: userInfo,
+    })
+    .then((res) => {
+      console.log(res);
+      localStorage.setItem("token", res.data.token);
+      dispatch(setUser(res.data));
+    })
+    .catch((err) => console.log(err));
 };
 
 export const autoLogin = () => (dispatch) => {

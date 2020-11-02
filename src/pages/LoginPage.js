@@ -3,9 +3,8 @@ import styled from "styled-components";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { ReactComponent as HelloIcon } from "../assets/HelloIcon.svg";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserGoogle } from "../actions/userActions";
+import { fetchUserGoogle, fetchUserFacebook } from "../actions/userActions";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 
 const Wrapper = styled.div`
@@ -61,18 +60,14 @@ const LoginPage = () => {
 
   const dispatch = useDispatch();
   const LoginGoogle = (data) => dispatch(fetchUserGoogle(data));
+  const LoginFacebook = (data) => dispatch(fetchUserFacebook(data));
 
   const responseGoogle = (response) => {
     LoginGoogle(response.tokenId);
   };
 
   const responseFacebook = (response) => {
-    axios
-      .post("http://176.107.131.27:5000/auth/facebook", {
-        token: response.accessToken,
-      })
-      .then((res) => console.log(res));
-    console.log(response);
+    LoginFacebook(response.accessToken);
   };
   return (
     <Wrapper>
@@ -86,6 +81,7 @@ const LoginPage = () => {
             buttonText="Zaloguj się z google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
+            autoLoad={false}
             render={(renderProps) => (
               <SocialButton
                 onClick={renderProps.onClick}

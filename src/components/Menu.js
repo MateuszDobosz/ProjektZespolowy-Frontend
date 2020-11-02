@@ -18,7 +18,6 @@ const Wrapper = styled.ul`
   list-style: none;
   height: 50px;
 
-
   justify-content: flex-end;
   align-items: center;
 
@@ -46,12 +45,16 @@ const Menu = () => {
   return (
     <NavWrapper>
       <BeltWrapper>
-        <Link to="/"><img src={LogoIcon} alt="Logo" /></Link>
+        <Link to="/">
+          <img src={LogoIcon} alt="Logo" />
+        </Link>
         <Wrapper>
           <ListItem>
-            <StyledLink to="/admin" activeClassName="active1">
-              Panel admina
-            </StyledLink>
+            {user.isAdmin ? (
+              <StyledLink to="/admin" activeClassName="active1">
+                Panel admina
+              </StyledLink>
+            ) : null}
             <StyledLink to="/news" activeClassName="active1">
               Aktualności
             </StyledLink>
@@ -80,10 +83,10 @@ const Menu = () => {
                 Wyloguj {user.name}
               </StyledLink>
             ) : (
-                <StyledLink to="/login" activeClassName="active1">
-                  Dołącz do nas
-                </StyledLink>
-              )}
+              <StyledLink to="/login" activeClassName="active1">
+                Dołącz do nas
+              </StyledLink>
+            )}
           </ListItem>
         </Wrapper>
       </BeltWrapper>
