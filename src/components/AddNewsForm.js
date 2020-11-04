@@ -22,7 +22,6 @@ const AddNewsForm = () => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
       const { title, description } = values;
       Axios.post("http://176.107.131.27/panel/new", {
         title,
