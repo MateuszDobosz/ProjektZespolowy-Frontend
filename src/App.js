@@ -9,6 +9,7 @@ import { autoLogin } from "./actions/userActions";
 import AdminPage from "./pages/AdminPage";
 import AnimalsPage from "./pages/AnimalsPage";
 import NewsPage from "./pages/NewsPage";
+import SurveyPage from "./pages/SurveyPage";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,9 +28,9 @@ const App = () => {
       <Router>
         <Menu />
         <Switch>
-          <Route path="/donate"></Route>
+          <Route path="/survey" component={SurveyPage}></Route>
           <Route path="/walk"></Route>
-          <Route path='/news' component={NewsPage}></Route>
+          <Route path="/news" component={NewsPage}></Route>
           <Route path="/animals" component={AnimalsPage}></Route>
           <Route path="/admin" component={AdminPage}></Route>
           <Route path="/login" component={LoginPage}></Route>

@@ -58,8 +58,8 @@ const Menu = () => {
             <StyledLink to="/news" activeClassName="active1">
               Aktualności
             </StyledLink>
-            <StyledLink to="/donates" activeClassName="active1">
-              Wesprzyj nas
+            <StyledLink to="/survey" activeClassName="active1">
+              Ankieta przedadopcyjna
             </StyledLink>
           </ListItem>
           <ListItem>

@@ -1,26 +1,51 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-align-items:center;
-height: 200px;
-width:100%;
-border:red solid 2px;
-margin: 50px 0;
-`
-const Title = styled.h1`
-
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin: 50px 0 0 0;
+`;
+const TitleWrapper = styled.div`
+  background-color: rgba(196, 196, 196, 0.3);
+  width: 100%;
+  height: 70px;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+`;
+const DescriptionWrapper = styled.div`
+  background-color: rgba(196, 196, 196, 0.3);
+  width: 100%;
+`;
 const Description = styled.p`
-font-size:15px;
-`
+  padding: 20px;
+`;
 
-const News = ({ title, description }) => <Wrapper>
-    <Title>{title}</Title>
-    <Description>{description}</Description>
-</Wrapper>
+const Title = styled.p`
+  padding: 0 0 0 80px;
+  font-size: 30px;
+  font-weight: 700;
+`;
+
+const Publication = styled.p`
+  padding: 0px 80px 0;
+  font-weight: normal;
+  font-size: 16px;
+`;
+const News = ({ title, description, createdAt }) => (
+  <Wrapper>
+    <TitleWrapper>
+      <Title>{title}</Title>
+      <Publication>{createdAt}</Publication>
+    </TitleWrapper>
+    <DescriptionWrapper>
+      <Description>{description}</Description>
+    </DescriptionWrapper>
+  </Wrapper>
+);
 
 export default News;
