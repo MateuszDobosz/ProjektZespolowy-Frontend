@@ -6,6 +6,7 @@ const Text = styled.p`
   font-weight: 700;
   font-size: 30px;
   margin-top: 20px;
+  height: 50px;
 `;
 
 export default Text;

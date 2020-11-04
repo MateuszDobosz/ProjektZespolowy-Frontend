@@ -22,7 +22,7 @@ const Name = styled.p`
   font-size: 35px;
   font-weight: 700;
   color: white;
-  padding: 10px;
+  padding: 10px 25px;
   -webkit-text-stroke: 1px black;
   align-self: flex-start;
 `;
