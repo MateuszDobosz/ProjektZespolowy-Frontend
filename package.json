@@ -1,5 +1,6 @@
 {
   "name": "projekt-zespolowy-schronisko",
+  "proxy": "http://176.107.131.27",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -9,7 +9,7 @@ const AnimalsPage = () => {
   const [animals, setAnimals] = useState();
 
   useEffect(() => {
-    axios.get("http://176.107.131.27/animals/overview").then((response) => {
+    axios.get("animals/overview").then((response) => {
       console.log(response.data);
       setAnimals(response.data);
     });

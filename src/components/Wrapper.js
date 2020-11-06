@@ -9,7 +9,7 @@ const Wrapper = styled.section`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 export default Wrapper;

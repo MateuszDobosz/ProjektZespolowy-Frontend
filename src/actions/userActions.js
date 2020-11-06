@@ -8,12 +8,11 @@ export const logUserOut = () => ({ type: "LOG_OUT" });
 
 export const fetchUserGoogle = (userInfo) => (dispatch) => {
   axios
-    .post("http://176.107.131.27/auth/google", {
+    .post("auth/google", {
       token: userInfo,
     })
     .then((res) => {
       console.log(res);
-      localStorage.setItem("token", res.data.token);
       dispatch(setUser(res.data));
     })
     .catch((err) => console.log(err));
@@ -21,7 +20,7 @@ export const fetchUserGoogle = (userInfo) => (dispatch) => {
 
 export const fetchUserFacebook = (userInfo) => (dispatch) => {
   axios
-    .post("http://176.107.131.27/auth/facebook", {
+    .post("auth/facebook", {
       token: userInfo,
     })
     .then((res) => {
@@ -34,7 +33,7 @@ export const fetchUserFacebook = (userInfo) => (dispatch) => {
 
 export const autoLogin = () => (dispatch) => {
   axios
-    .post("http://mateuszdobosz.site/auth/check", {
+    .post("auth/check", {
       token: localStorage.getItem("token"),
     })
     .then((res) => {

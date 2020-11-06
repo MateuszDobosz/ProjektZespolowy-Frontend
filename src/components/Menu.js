@@ -17,6 +17,7 @@ const Wrapper = styled.ul`
   display: flex;
   list-style: none;
   height: 50px;
+  flex-wrap: wrap;
 
   justify-content: flex-end;
   align-items: center;
@@ -68,6 +69,11 @@ const Menu = () => {
             </StyledLink>
           </ListItem>
           <ListItem>
+            <StyledLink to="/donations" activeClassName="active1">
+              Wesprzyj nas
+            </StyledLink>
+          </ListItem>
+          <ListItem>
             <StyledLink to="/animals" activeClassName="active1">
               Nasi podopieczni
             </StyledLink>
@@ -80,7 +86,7 @@ const Menu = () => {
                   dispatch({ type: "LOG_OUT" });
                 }}
               >
-                Wyloguj {user.name}
+                Wyloguj
               </StyledLink>
             ) : (
               <StyledLink to="/login" activeClassName="active1">

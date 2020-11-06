@@ -29,7 +29,7 @@ const Name = styled.p`
 const Animal = ({ title, imageUrl, category }) => (
   <Wrapper img={imageUrl}>
     <Name>{title}</Name>
-    <Button>Adoptuj</Button>
+    <Button>Więcej</Button>
   </Wrapper>
 );
 

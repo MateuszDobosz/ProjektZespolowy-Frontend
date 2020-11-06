@@ -10,6 +10,7 @@ import AdminPage from "./pages/AdminPage";
 import AnimalsPage from "./pages/AnimalsPage";
 import NewsPage from "./pages/NewsPage";
 import SurveyPage from "./pages/SurveyPage";
+import DonationsPage from "./pages/DonationsPage";
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/animals" component={AnimalsPage}></Route>
           <Route path="/admin" component={AdminPage}></Route>
           <Route path="/login" component={LoginPage}></Route>
+          <Route path="/donations" component={DonationsPage}></Route>
           <Route path="/" component={HomePage}></Route>
         </Switch>
       </Router>

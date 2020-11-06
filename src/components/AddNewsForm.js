@@ -23,7 +23,7 @@ const AddNewsForm = () => {
 
     onSubmit: (values) => {
       const { title, description } = values;
-      Axios.post("http://176.107.131.27/panel/news/new", {
+      Axios.post("panel/news/new", {
         title,
         description,
         token: localStorage.getItem("token"),

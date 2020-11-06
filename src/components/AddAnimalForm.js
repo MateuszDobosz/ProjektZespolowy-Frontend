@@ -40,7 +40,7 @@ const AddAnimalForm = () => {
       data.append("token", localStorage.getItem("token"));
 
       axios
-        .post("http://176.107.131.27/animals/new", data, {
+        .post("animals/new", data, {
           headers: {
             "content-type": "multipart/form-data",
           },

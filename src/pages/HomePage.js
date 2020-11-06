@@ -44,7 +44,7 @@ const MainImg = styled.div`
 `;
 const HomePage = () => (
   <Wrapper>
-    <MainImg />
+    <MainImg></MainImg>
     <StyledText>Szukają domu:</StyledText>
     <CardWrapper>
       <AnimalCard name="Tofik" />

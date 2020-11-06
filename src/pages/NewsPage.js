@@ -1,39 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import News from "../components/News";
 import Wrapper from "../components/Wrapper";
+import axios from "axios";
+import Loader from "react-loader-spinner";
 
-const NewsList = [
-  {
-    title: "Zbiórka dla schroniska",
-    description:
-      "Zbiórka odbędzie się 10.12.2020,Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020Zbiórka odbędzie się 10.12.2020 ",
-    publication: "24.11.2020",
-  },
-];
+const NewsPage = () => {
+  const [news, setNews] = useState("");
 
-const NewsPage = () => (
-  <Wrapper>
-    <News
-      title={NewsList[0].title}
-      description={NewsList[0].description}
-      createdAt={NewsList[0].publication}
-    />
-    <News
-      title={NewsList[0].title}
-      description={NewsList[0].description}
-      createdAt={NewsList[0].publication}
-    />
-    <News
-      title={NewsList[0].title}
-      description={NewsList[0].description}
-      createdAt={NewsList[0].publication}
-    />
-    <News
-      title={NewsList[0].title}
-      description={NewsList[0].description}
-      createdAt={NewsList[0].publication}
-    />
-  </Wrapper>
-);
+  useEffect(() => {
+    axios.get("panel/news/overview").then((response) => {
+      console.log(response.data.news);
+      setNews(response.data.news);
+    });
+  }, []);
+
+  return (
+    <Wrapper>
+      {news ? (
+        news.map((newss) => {
+          return (
+            <News
+              key={newss.id}
+              createdAt={newss.date}
+              description={newss.description}
+              title={newss.title}
+            />
+          );
+        })
+      ) : (
+        <Loader type="Puff" color="#0d9e47" height={100} width={100} />
+      )}
+    </Wrapper>
+  );
+};
 
 export default NewsPage;
