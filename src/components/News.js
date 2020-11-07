@@ -26,13 +26,13 @@ const Description = styled.p`
 `;
 
 const Title = styled.p`
-  padding: 0 0 0 80px;
+  padding: 0 0 0 20px;
   font-size: 30px;
   font-weight: 700;
 `;
 
 const Publication = styled.p`
-  padding: 0px 80px 0;
+  padding: 0px 20px 0;
   font-weight: normal;
   font-size: 16px;
 `;

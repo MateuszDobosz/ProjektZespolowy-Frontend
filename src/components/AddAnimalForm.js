@@ -37,7 +37,6 @@ const AddAnimalForm = () => {
       data.append("name", values.title);
       data.append("description", values.description);
       data.append("category", values.category);
-      data.append("token", localStorage.getItem("token"));
 
       axios
         .post("animals/new", data, {
