@@ -108,7 +108,7 @@ const SurveyForm = () => {
         name="answer6"
         type="text"
         onChange={formik.handleChange}
-        value={formik.values.answer1}
+        value={formik.values.answer6}
         placeholder=""
       />
       <label htmlFor="answer7">

@@ -14,6 +14,12 @@ const NewsPage = () => {
     });
   }, []);
 
+  const extractDate = (d) => {
+    const newDate = new Date(d);
+    return (
+      newDate.getFullYear() + "-" + newDate.getMonth() + "-" + newDate.getDate()
+    );
+  };
   return (
     <Wrapper>
       {news ? (
@@ -21,7 +27,7 @@ const NewsPage = () => {
           return (
             <News
               key={newss.id}
-              createdAt={newss.date}
+              createdAt={extractDate(newss.date)}
               description={newss.description}
               title={newss.title}
             />
