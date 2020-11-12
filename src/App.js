@@ -11,6 +11,7 @@ import AnimalsPage from "./pages/AnimalsPage";
 import NewsPage from "./pages/NewsPage";
 import SurveyPage from "./pages/SurveyPage";
 import DonationsPage from "./pages/DonationsPage";
+import PrivateRoute from './components/PrivateRoute';
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,9 +34,9 @@ const App = () => {
           <Route path="/news" component={NewsPage}></Route>
           <Route path="/animals" component={AnimalsPage}></Route>
           <Route path="/login" component={LoginPage}></Route>
-          <Route path="/survey" component={SurveyPage}></Route>
-          <Route path="/admin" component={AdminPage}></Route>
-          <Route path="/donations" component={DonationsPage}></Route>
+          <PrivateRoute path="/survey" Private><SurveyPage /></PrivateRoute>
+          <PrivateRoute path="/admin" ><AdminPage /></PrivateRoute>
+          <PrivateRoute path="/donations" ><DonationsPage/></PrivateRoute>
           <Route path="/" component={HomePage}></Route>
         </Switch>
       </Router>
