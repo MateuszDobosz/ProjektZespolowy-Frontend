@@ -29,12 +29,12 @@ const App = () => {
       <Router>
         <Menu />
         <Switch>
-          <Route path="/survey" component={SurveyPage}></Route>
           <Route path="/walk"></Route>
           <Route path="/news" component={NewsPage}></Route>
           <Route path="/animals" component={AnimalsPage}></Route>
-          <Route path="/admin" component={AdminPage}></Route>
           <Route path="/login" component={LoginPage}></Route>
+          <Route path="/survey" component={SurveyPage}></Route>
+          <Route path="/admin" component={AdminPage}></Route>
           <Route path="/donations" component={DonationsPage}></Route>
           <Route path="/" component={HomePage}></Route>
         </Switch>
