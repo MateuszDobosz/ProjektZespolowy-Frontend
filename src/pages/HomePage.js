@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Img from "../assets/Group 12.png";
 import AnimalCard from "../components/AnimalCard";
 import axios from "axios";
-import Loader from "react-loader-spinner";
+import Loader from "react-loader-spinner"
 import Slider from "react-slick";
 
 const Wrapper = styled.div`
@@ -102,8 +102,8 @@ const HomePage = () => {
               );
             })
           ) : (
-            <Loader type="Puff" color="#0d9e47" height={100} width={100} />
-          )}
+              <Loader type="Puff" color="#0d9e47" height={100} width={100} />
+            )}
         </StyledSlider>
       </MainImg>
       <StyledText>Szukają domu:</StyledText>

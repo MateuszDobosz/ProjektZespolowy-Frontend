@@ -63,11 +63,11 @@ const Menu = () => {
               Ankieta przedadopcyjna
             </StyledLink>
           </ListItem>
-          <ListItem>
+          {/* <ListItem>
             <StyledLink to="/walk" activeClassName="active1">
               Umów się na spacer
             </StyledLink>
-          </ListItem>
+          </ListItem> */}
           <ListItem>
             <StyledLink to="/donations" activeClassName="active1">
               Wesprzyj nas
@@ -89,10 +89,10 @@ const Menu = () => {
                 Wyloguj
               </StyledLink>
             ) : (
-              <StyledLink to="/login" activeClassName="active1">
-                Dołącz do nas
-              </StyledLink>
-            )}
+                <StyledLink to="/login" activeClassName="active1">
+                  Dołącz do nas
+                </StyledLink>
+              )}
           </ListItem>
         </Wrapper>
       </BeltWrapper>

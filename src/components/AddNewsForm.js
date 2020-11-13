@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import styled from "styled-components";
 import Input from "./Input";
 import Button from "./Button";
 import TextArea from "./Textarea";
 import Axios from "axios";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import Modal from "./Modal";
 
 const Form = styled.form`
   display: flex;
@@ -15,6 +18,8 @@ const Form = styled.form`
 `;
 
 const AddNewsForm = () => {
+
+  const [newsMessage, setNewsMessage] = useState()
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -29,7 +34,8 @@ const AddNewsForm = () => {
         token: localStorage.getItem("token"),
       }).then((res) => {
         console.log(res);
-      });
+        setNewsMessage("Udalo sie dodać news")
+      }).catch(e => { setNewsMessage("Nie udało się dodać wiadomości") });
     },
   });
   return (
@@ -53,9 +59,13 @@ const AddNewsForm = () => {
         value={formik.values.description}
         placeholder="Opis wydarzenia"
       />
+      <Modal />
+      <Popup trigger={<Button className="button" type="submit"> Dodaj wiadomość </Button>} modal>
+        <span> {newsMessage} </span>
+      </Popup>
 
-      <Button type="submit">Dodaj wiadomość</Button>
     </Form>
+
   );
 };
 

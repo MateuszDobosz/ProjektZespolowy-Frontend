@@ -26,7 +26,7 @@ const NewsPage = () => {
         news.map((newss) => {
           return (
             <News
-              key={newss.id}
+              key={newss._id}
               createdAt={extractDate(newss.date)}
               description={newss.description}
               title={newss.title}
@@ -34,8 +34,8 @@ const NewsPage = () => {
           );
         })
       ) : (
-        <Loader type="Puff" color="#0d9e47" height={100} width={100} />
-      )}
+          <Loader type="Puff" color="#0d9e47" height={100} width={100} />
+        )}
     </Wrapper>
   );
 };
