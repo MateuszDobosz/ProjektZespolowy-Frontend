@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 
+
 const Wrapper = styled.div`
   max-width: 1140px;
   width: 99%;
@@ -57,6 +58,7 @@ const ButtonWrapper = styled.div`
 
 const DonationsPage = () => {
   const [amount, setAmount] = useState(0);
+
 
   const handleInput = (e) => {
     setAmount(e.target.value);
@@ -114,6 +116,7 @@ const DonationsPage = () => {
       >
         Wpłać
       </Button>
+
       <img
         src="http://dogwalkinginastoria.com/images/catAndDogHeader_1040.jpg"
         alt="Animals"

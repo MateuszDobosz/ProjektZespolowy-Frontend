@@ -6,6 +6,7 @@ import { ReactComponent as HelloIcon } from "../assets/HelloIcon.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserGoogle, fetchUserFacebook } from "../actions/userActions";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { Redirect, useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -69,44 +70,50 @@ const LoginPage = () => {
   const responseFacebook = (response) => {
     LoginFacebook(response.accessToken);
   };
+
+  const { state } = useLocation();
+
+  if (loggedIn === true) {
+    return <Redirect to={state?.from || '/'} />
+  }
   return (
     <Wrapper>
       <HelloIcon />
       {loggedIn ? (
         <p>Zalogowany jako {user.name}</p>
       ) : (
-        <ButtonWrapper>
-          <GoogleLogin
-            clientId="299847310816-vc55jckp0jqbioah4fv37vcv4pn9oiuh.apps.googleusercontent.com"
-            buttonText="Zaloguj się z google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            autoLoad={false}
-            render={(renderProps) => (
-              <SocialButton
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-              >
-                <FaGoogle />
+          <ButtonWrapper>
+            <GoogleLogin
+              clientId="299847310816-vc55jckp0jqbioah4fv37vcv4pn9oiuh.apps.googleusercontent.com"
+              buttonText="Zaloguj się z google"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              autoLoad={false}
+              render={(renderProps) => (
+                <SocialButton
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >
+                  <FaGoogle />
                 Zaloguj z Google
-              </SocialButton>
-            )}
-            cookiePolicy={"single_host_origin"}
-            disabled={false}
-          />
-          <FacebookLogin
-            appId="652089999027908"
-            autoLoad={false}
-            callback={responseFacebook}
-            render={(renderProps) => (
-              <SocialButton facebook onClick={renderProps.onClick}>
-                <FaFacebookF />
+                </SocialButton>
+              )}
+              cookiePolicy={"single_host_origin"}
+              disabled={false}
+            />
+            <FacebookLogin
+              appId="652089999027908"
+              autoLoad={false}
+              callback={responseFacebook}
+              render={(renderProps) => (
+                <SocialButton facebook onClick={renderProps.onClick}>
+                  <FaFacebookF />
                 Zaloguj z Facebook
-              </SocialButton>
-            )}
-          />
-        </ButtonWrapper>
-      )}
+                </SocialButton>
+              )}
+            />
+          </ButtonWrapper>
+        )}
 
       {loggedIn ? (
         <LogoutButton

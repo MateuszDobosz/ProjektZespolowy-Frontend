@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import styled from "styled-components";
 import ValidationSchema from "./Validations/AddAnimalValidarion";
@@ -6,6 +6,7 @@ import Input from "./Input";
 import Button from "./Button";
 import TextArea from "./Textarea";
 import InputFile from "./InputFile";
+import Popup from 'reactjs-popup';
 
 import axios from "axios";
 
@@ -20,6 +21,7 @@ const Form = styled.form`
 `;
 
 const AddAnimalForm = () => {
+  const [newsMessage, setNewsMessage] = useState()
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -46,6 +48,10 @@ const AddAnimalForm = () => {
         })
         .then((res) => {
           console.log(res);
+          setNewsMessage("Udalo sie dodać zwierzę.")
+        })
+        .catch(e => {
+          setNewsMessage("Nie udało się dodać zwierzęcia.")
         });
     },
   });
@@ -99,7 +105,9 @@ const AddAnimalForm = () => {
         }
       />
 
-      <Button type="submit">Dodaj zwierzę</Button>
+      <Popup trigger={<Button className="button" type="submit"> Dodaj zwierzę </Button>} modal>
+        <span> {newsMessage} </span>
+      </Popup>
     </Form>
   );
 };

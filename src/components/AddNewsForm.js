@@ -7,7 +7,7 @@ import TextArea from "./Textarea";
 import Axios from "axios";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import Modal from "./Modal";
+
 
 const Form = styled.form`
   display: flex;
@@ -35,7 +35,7 @@ const AddNewsForm = () => {
       }).then((res) => {
         console.log(res);
         setNewsMessage("Udalo sie dodać news")
-      }).catch(e => { setNewsMessage("Nie udało się dodać wiadomości") });
+      }).catch(e => { console.log(e); setNewsMessage("Nie udało się dodać wiadomości") });
     },
   });
   return (
@@ -59,7 +59,7 @@ const AddNewsForm = () => {
         value={formik.values.description}
         placeholder="Opis wydarzenia"
       />
-      <Modal />
+
       <Popup trigger={<Button className="button" type="submit"> Dodaj wiadomość </Button>} modal>
         <span> {newsMessage} </span>
       </Popup>
