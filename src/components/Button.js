@@ -9,6 +9,7 @@ const Button = styled.button`
   font-weight: 700;
   border: none;
   margin: 10px 0;
+  outline:none;
 `;
 
 export default Button;

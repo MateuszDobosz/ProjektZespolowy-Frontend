@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
+import Popup from 'reactjs-popup';
 
 const Wrapper = styled.div`
   max-width: 1140px;
@@ -33,6 +34,7 @@ const Wrapper = styled.div`
       max-height: 140px;
     }
   }
+ 
 `;
 
 const ButtonWrapper = styled.div`
@@ -55,8 +57,20 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const ModalContent = styled.div`
+width:50%;
+text-align:center;
+`
+
+const StyledPopup = styled(Popup)`
+display:flex;
+justify-content:center;`
+
 const DonationsPage = () => {
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
   const [amount, setAmount] = useState(0);
+  const [modalText,setModalText]=useState("Dziękujemy za dotację. :)");
 
   const handleInput = (e) => {
     setAmount(e.target.value);
@@ -68,9 +82,15 @@ const DonationsPage = () => {
     })
       .then((res) => {
         console.log(res);
+        setOpen(true);
         setAmount(0);
+        
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {console.log(e);
+        setModalText("Coś poszło nie tak :(")
+                    setOpen(true);
+
+      });
   };
 
   return (
@@ -107,6 +127,9 @@ const DonationsPage = () => {
           40 zł
         </button>
       </ButtonWrapper>
+      <StyledPopup open={open} closeOnDocumentClick onClose={closeModal}><ModalContent>
+          {modalText}
+        </ModalContent></StyledPopup>
       <Button
         onClick={() => {
           handleDonation(amount);
