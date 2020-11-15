@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import Popup from 'reactjs-popup';
 
+
 const Wrapper = styled.div`
   max-width: 1140px;
   width: 99%;
@@ -72,6 +73,7 @@ const DonationsPage = () => {
   const [amount, setAmount] = useState(0);
   const [modalText,setModalText]=useState("Dziękujemy za dotację. :)");
 
+
   const handleInput = (e) => {
     setAmount(e.target.value);
   };
@@ -137,6 +139,7 @@ const DonationsPage = () => {
       >
         Wpłać
       </Button>
+
       <img
         src="http://dogwalkinginastoria.com/images/catAndDogHeader_1040.jpg"
         alt="Animals"
