@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 import Popup from 'reactjs-popup';
+import { useSelector } from "react-redux";
 
 
 const Wrapper = styled.div`
@@ -72,7 +73,7 @@ const DonationsPage = () => {
   const closeModal = () => setOpen(false);
   const [amount, setAmount] = useState(0);
   const [modalText,setModalText]=useState("Dziękujemy za dotację. :)");
-
+  const user = useSelector((state) => state.userReducer.user);
 
   const handleInput = (e) => {
     setAmount(e.target.value);
@@ -98,6 +99,7 @@ const DonationsPage = () => {
   return (
     <Wrapper>
       <h1>Darowizna</h1>
+      <p>Do tej pory wpłaciłeś: {user.balance}</p>
       <input type="number" onChange={handleInput} value={amount} />
       <ButtonWrapper>
         <button
