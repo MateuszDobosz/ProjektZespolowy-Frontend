@@ -85,6 +85,7 @@ const DonationsPage = () => {
     })
       .then((res) => {
         console.log(res);
+        user.balance=user.balance+value;
         setOpen(true);
         setAmount(0);
         
@@ -99,7 +100,7 @@ const DonationsPage = () => {
   return (
     <Wrapper>
       <h1>Darowizna</h1>
-      <p>Do tej pory wpłaciłeś: {user.balance}</p>
+      {user ? <p>Do tej pory wpłaciłeś: {user.balance}zł.</p> : null}
       <input type="number" onChange={handleInput} value={amount} />
       <ButtonWrapper>
         <button
