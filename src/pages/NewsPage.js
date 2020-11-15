@@ -17,7 +17,7 @@ const NewsPage = () => {
   const extractDate = (d) => {
     const newDate = new Date(d);
     return (
-      newDate.getFullYear() + "-" + newDate.getMonth() + "-" + newDate.getDate()
+      newDate.getFullYear() + "-" + parseInt(newDate.getMonth()+1) + "-" + newDate.getDate()
     );
   };
   return (
