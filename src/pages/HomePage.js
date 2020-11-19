@@ -40,10 +40,7 @@ const MainImg = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 768px) {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    z-index: -1;
+    width:100%;
   }
 `;
 
@@ -63,6 +60,9 @@ const Wrap = styled.div`
 
 const StyledSlider = styled(Slider)`
   max-width: 1140px;
+  @media (max-width: 768px) {
+    width:80%;
+  }
 `;
 
 const HomePage = () => {
