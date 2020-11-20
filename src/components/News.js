@@ -6,14 +6,15 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: auto;
-  width: 100%;
+  width: 90%;
   margin: 50px 0 0 0;
 `;
 const TitleWrapper = styled.div`
   background-color: rgba(196, 196, 196, 0.3);
   width: 100%;
-  height: 70px;
+  min-height: 70px;
   margin: 0 0 20px;
+  padding:5px;
   display: flex;
   flex-direction: column;
 `;
