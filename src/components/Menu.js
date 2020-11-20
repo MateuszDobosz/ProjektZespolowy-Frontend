@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import StyledLink from "../components/Link";
 import LogoIcon from "../assets/Group.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import BurgerMenu from './BurgerMenu';
+import CollapseMenu from './CollapseMenu'
 // import { fetchUserGoogle } from "../actions/userActions";
 
 const NavWrapper = styled.div`
@@ -34,12 +36,23 @@ const BeltWrapper = styled.nav`
   max-width: 1140px;
   padding: 10px;
 `;
+const BurgerWrapper = styled.div`
+@media (min-width: 768px) {
+    display: none;
+  }
+`
 
 const ListItem = styled.li``;
 
 const Menu = () => {
   const loggedIn = useSelector((state) => state.userReducer.loggedIn);
   const user = useSelector((state) => state.userReducer.user);
+  const [nav, setNav] = useState(false);
+
+
+    const handleNavbar = () => {
+        setNav(!nav);
+    }
 
   const dispatch = useDispatch();
 
@@ -95,6 +108,10 @@ const Menu = () => {
               )}
           </ListItem>
         </Wrapper>
+        <BurgerWrapper>
+                <BurgerMenu handleNavbar={handleNavbar} navbarState={nav} />
+                {nav ? <CollapseMenu handleNavbar={handleNavbar} /> : null}
+            </BurgerWrapper>
       </BeltWrapper>
     </NavWrapper>
   );

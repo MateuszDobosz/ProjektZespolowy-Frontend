@@ -87,10 +87,11 @@ const Description = styled.p`
 
 const StyledClose = styled(Close)`
   width: 40px;
+  height:40px;
   cursor: pointer;
   position: absolute;
   right: 20px;
-  bottom: 30px;
+  top:20px;
 `;
 const Animal = ({
   title,
