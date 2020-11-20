@@ -10,6 +10,7 @@ const Wrapper = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  padding:0 0 20px 0;
 `;
 
 export default Wrapper;

@@ -71,7 +71,7 @@ justify-content:center;`
 const DonationsPage = () => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(5);
   const [modalText,setModalText]=useState("Dziękujemy za dotację. :)");
   const user = useSelector((state) => state.userReducer.user);
 
@@ -85,9 +85,9 @@ const DonationsPage = () => {
     })
       .then((res) => {
         console.log(res);
-        user.balance=user.balance+value;
+        user.balance=parseInt(user.balance)+parseInt(value);
         setOpen(true);
-        setAmount(0);
+        setAmount(5);
         
       })
       .catch((e) => {console.log(e);
@@ -101,7 +101,7 @@ const DonationsPage = () => {
     <Wrapper>
       <h1>Darowizna</h1>
       {user ? <p>Do tej pory wpłaciłeś: {user.balance}zł.</p> : null}
-      <input type="number" onChange={handleInput} value={amount} />
+      <input type="number" onChange={handleInput} min={5} max={100000} value={amount} />
       <ButtonWrapper>
         <button
           onClick={() => {
