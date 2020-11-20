@@ -60,6 +60,7 @@ const Wrap = styled.div`
 
 const StyledSlider = styled(Slider)`
   max-width: 1140px;
+  width:80%;
   @media (max-width: 768px) {
     width:80%;
   }
