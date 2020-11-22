@@ -3,15 +3,27 @@ import styled from "styled-components";
 import Img from "../assets/piesek.png";
 
 const Wrapper = styled.div`
+position:relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background: url(${({ img }) => img});
+  background-size: cover;
+  width:200px;
+  height:200px;
+  border:solid 5px #0d9e47;
+  p{
+    position:absolute;
+    color:white;
+    bottom:10px;
+    left:10px;
+  }
+
 `;
 
-const AnimalCard = ({ name }) => (
-  <Wrapper>
-    <img src={Img} alt="Dog" />
+
+
+const AnimalCard = ({ name,img }) => (
+  <Wrapper img={img}>
+    {/* <img src={img} alt="Dog" /> */}
     <p>{name}</p>
   </Wrapper>
 );

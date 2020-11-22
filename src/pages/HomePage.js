@@ -22,10 +22,11 @@ const CardWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 1140px;
+  width:100%;
   justify-content: space-between;
   align-items: center;
   margin: 30px 0 0 0;
-
+  gap:20px;
   @media (max-width: 768px) {
     justify-content: center;
   }
@@ -68,10 +69,18 @@ const StyledSlider = styled(Slider)`
 
 const HomePage = () => {
   const [news, setNews] = useState();
+  const [animals,setAnimals]=useState();
   useEffect(() => {
     axios.get("panel/news/overview").then((response) => {
       console.log(response.data.news);
       setNews(response.data.news);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get("animals/random").then((response) => {
+      console.log(response.data);
+      setAnimals(response.data);
     });
   }, []);
 
@@ -109,10 +118,7 @@ const HomePage = () => {
       </MainImg>
       <StyledText>Szukają domu:</StyledText>
       <CardWrapper>
-        <AnimalCard name="Tofik" />
-        <AnimalCard name="Tofik" />
-        <AnimalCard name="Tofik" />
-        <AnimalCard name="Tofik" />
+        {animals ? (animals.map(animal => <AnimalCard name={animal.name} img={`http://176.107.131.27/images/${animal.image}`} />)) : null}
       </CardWrapper>
     </Wrapper>
   );
