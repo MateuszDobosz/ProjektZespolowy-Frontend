@@ -7,7 +7,7 @@ const InputFile = styled.input`
     visibility: hidden;
   }
   &::before {
-    content: "Select some files";
+    content: "Wybierz zdjęcie";
   }
 `;
 
