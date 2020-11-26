@@ -70,7 +70,7 @@ const SurveyForm = () => {
         answer10: values.answer10}
       }
       ).then(res => {
-        console.log(res);
+        
         setNewsMessage("Udalo sie dodać ankiete")
       }).catch(e =>{ console.log(e)
         setNewsMessage("Nie udało się dodać ankiety")})

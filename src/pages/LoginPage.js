@@ -118,7 +118,7 @@ const LoginPage = () => {
       {loggedIn ? (
         <LogoutButton
           onClick={() => {
-            console.log(user);
+            
             dispatch({ type: "LOG_OUT" });
           }}
         >

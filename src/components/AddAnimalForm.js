@@ -32,7 +32,7 @@ const AddAnimalForm = () => {
     },
     ValidationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      
       let data = new FormData();
       data.append("photo", values.avatar);
       data.append("age", values.age);
@@ -47,7 +47,7 @@ const AddAnimalForm = () => {
           },
         })
         .then((res) => {
-          console.log(res);
+         
           setNewsMessage("Udalo sie dodać zwierzę.")
         })
         .catch(e => {
@@ -68,8 +68,8 @@ const AddAnimalForm = () => {
         placeholder="Imię"
       />
       {/* <label htmlFor="category">Wybierz kategorie</label> */}
-      <select id="category" name="category" onChange={formik.handleChange}>
-        <option value="" selected disabled hidden>
+      <select id="category" name="category" defaultValue="Dog" onChange={formik.handleChange}>
+        <option value="" disabled hidden>
           Wybierz kategorie
         </option>
         <option value="Dog">Pies</option>

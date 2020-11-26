@@ -11,13 +11,13 @@ const AnimalsPage = () => {
   const user = useSelector((state) => state.userReducer.user);
   useEffect(() => {
     axios.get("animals/overview").then((response) => {
-      console.log(response.data);
+      
       setAnimals(response.data);
     });
   }, []);
 
   const DeleteAnimal = (id) => {
-    console.log(id);
+    
     axios.delete(`animals/delete/${id}`).then(() => {
       let editedAnimals = animals.filter((animal) => animal._id !== id);
       setAnimals(editedAnimals);

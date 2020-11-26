@@ -33,7 +33,7 @@ const AddNewsForm = () => {
         description,
         token: localStorage.getItem("token"),
       }).then((res) => {
-        console.log(res);
+        
         setNewsMessage("Udalo sie dodać news")
       }).catch(e => { console.log(e); setNewsMessage("Nie udało się dodać wiadomości") });
     },

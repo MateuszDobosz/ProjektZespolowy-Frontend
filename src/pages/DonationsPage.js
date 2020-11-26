@@ -84,7 +84,7 @@ const DonationsPage = () => {
       amount: value,
     })
       .then((res) => {
-        console.log(res);
+        
         user.balance=parseInt(user.balance)+parseInt(value);
         setOpen(true);
         setAmount(5);

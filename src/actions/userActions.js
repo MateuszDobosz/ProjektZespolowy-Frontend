@@ -49,5 +49,5 @@ export const autoLogin = () => (dispatch) => {
       // console.log(res);
       dispatch(setUser(res.data));
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err.response.data));
 };

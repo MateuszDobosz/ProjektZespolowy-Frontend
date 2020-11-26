@@ -9,7 +9,7 @@ const NewsPage = () => {
 
   useEffect(() => {
     axios.get("panel/news/overview").then((response) => {
-      console.log(response.data.news);
+      
       setNews(response.data.news);
     });
   }, []);
