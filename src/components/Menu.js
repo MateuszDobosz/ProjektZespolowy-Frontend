@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import BurgerMenu from './BurgerMenu';
 import CollapseMenu from './CollapseMenu'
-// import { fetchUserGoogle } from "../actions/userActions";
+import { logOut } from "../actions/userActions";
 
 const NavWrapper = styled.div`
   background-color: #0d9e47;
@@ -47,6 +47,8 @@ const ListItem = styled.li``;
 const Menu = () => {
   const loggedIn = useSelector((state) => state.userReducer.loggedIn);
   const user = useSelector((state) => state.userReducer.user);
+  const dispatch = useDispatch();
+  const Logout = () => dispatch(logOut());
   const [nav, setNav] = useState(false);
 
 
@@ -54,7 +56,6 @@ const Menu = () => {
         setNav(!nav);
     }
 
-  const dispatch = useDispatch();
 
   return (
     <NavWrapper>
@@ -96,7 +97,7 @@ const Menu = () => {
               <StyledLink
                 to="/"
                 onClick={() => {
-                  dispatch({ type: "LOG_OUT" });
+                  Logout();
                 }}
               >
                 Wyloguj

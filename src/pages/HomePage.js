@@ -72,14 +72,14 @@ const HomePage = () => {
   const [animals,setAnimals]=useState();
   useEffect(() => {
     axios.get("panel/news/overview").then((response) => {
-      console.log(response.data.news);
+
       setNews(response.data.news);
     });
   }, []);
 
   useEffect(() => {
     axios.get("animals/random").then((response) => {
-      console.log(response.data);
+ 
       setAnimals(response.data);
     });
   }, []);
@@ -99,7 +99,7 @@ const HomePage = () => {
             news.map((newss) => {
               return (
                 <CarouselItem
-                  key={newss.id}
+                  key={newss._id}
                   createdAt={newss.date}
                   description={newss.description}
                   title={newss.title}
@@ -118,7 +118,7 @@ const HomePage = () => {
       </MainImg>
       <StyledText>Szukają domu:</StyledText>
       <CardWrapper>
-        {animals ? (animals.map(animal => <AnimalCard name={animal.name} img={`http://176.107.131.27/images/${animal.image}`} />)) : null}
+        {animals ? (animals.map(animal => <AnimalCard key={animal.name} name={animal.name} img={`http://176.107.131.27/images/${animal.image}`} />)) : null}
       </CardWrapper>
     </Wrapper>
   );

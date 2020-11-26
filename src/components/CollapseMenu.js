@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from "react-redux";
 import StyledLink from "../components/Link";
+import { logOut } from "../actions/userActions";
 
 
 const Wrapper = styled.nav`
@@ -30,6 +31,7 @@ const CollapseMenu = ({handleNavbar}) => {
     const loggedIn = useSelector((state) => state.userReducer.loggedIn);
     const user = useSelector((state) => state.userReducer.user);
     const dispatch = useDispatch();
+    const Logout = () => dispatch(logOut());
 
     return (
         <Wrapper>
@@ -66,7 +68,7 @@ const CollapseMenu = ({handleNavbar}) => {
               <StyledLink
                 to="/"
                 onClick={() => {
-                  dispatch({ type: "LOG_OUT" });
+                  Logout();
                   handleNavbar();
                 }}
               >
